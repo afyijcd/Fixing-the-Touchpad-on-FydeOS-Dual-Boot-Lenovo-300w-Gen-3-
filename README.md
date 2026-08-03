@@ -6,7 +6,7 @@ This is the complete, verified procedure for a **FydeOS dual-boot install** (ins
 
 Note: I created this hack with the help of Claude AI, since I couldn't find a fix anywhere on the net.
 
-The scripts 00-prepare-devmode.sh and install-touchpad-fix.sh automate the entire process, but not sure if those work in every case.
+The scripts 00-prepare-devmode.sh and install-touchpad-fix.sh automate the entire process as a post - fresh install of fydeos, but I am not sure if those work in every use case.
 
 
 
