@@ -180,5 +180,5 @@ fi
 sync
 log "done. Reboot for the fix to take effect."
 log "after reboot, verify with:"
-log "  sudo dmesg | grep -i '^\\[.*ACPI: DSDT'"
+log "  sudo dmesg | grep -i '^\[.*ACPI: DSDT'"
 log "  (look for OEM revision 00001001 instead of 00001000)"
