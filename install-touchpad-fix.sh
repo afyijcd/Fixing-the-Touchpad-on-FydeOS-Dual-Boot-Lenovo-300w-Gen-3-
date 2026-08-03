@@ -82,17 +82,18 @@ log "using disk: $disk"
 
 part_num_for_label() {
   # Prints the partition number matching a given GPT label on $disk.
+  # cgpt show lines look like:
+  #   2048     4677632       1  Label: "EFI system partition"
+  # i.e. the partition number ($3) and the Label: text are on the SAME
+  # line, so we just string-match the quoted label and print field 3.
   cgpt show "$disk" | awk -v label="$1" '
-    $0 ~ /Label:/ {
-      gsub(/"/, "", $2)
-      if ($2 == label) { print prev_part }
-    }
-    { if ($3 ~ /^[0-9]+$/) prev_part = $3 }
+    $0 ~ ("Label: \"" label "\"") { print $3; exit }
   '
 }
 
 esp_part=$(part_num_for_label "EFI system partition")
 [ -n "$esp_part" ] || esp_part=$(part_num_for_label "EFI System Partition")
+[ -n "$esp_part" ] || esp_part=$(part_num_for_label "EFI-SYSTEM")
 [ -n "$esp_part" ] || die "could not find the EFI system partition via cgpt. Check 'cgpt show $disk' manually."
 
 dualboot_part=$(part_num_for_label "FYDEOS-DUAL-BOOT")
