@@ -1,14 +1,31 @@
 # Fixing the ELAN0642/SYNA2392 Touchpad on FydeOS Dual-Boot (Lenovo 300w Gen 3)
 
-This is the complete, verified procedure for a **FydeOS dual-boot install** (installed alongside Windows/Linux without repartitioning, using the `FYDEOS-DUAL-BOOT` partition + rEFInd + GRUB boot chain). It assumes you already have a working patched `dsdt.aml` from a prior Ubuntu/Debian fix on the same physical machine (BIOS GACN49WW-style ACPI bug: OEM revision bump, `If(...==0x02)` → `Else`, and a duplicate `CDAT` field removed). See my other repo on how to fix that, or use the files in this repo which are ready.
+Download fydeos - AMD flavor. Unpack it and put it on a USB, 
+Install with multiboot and refind as the boot manager. Create a (local) account. 
 
-**Read this whole document once before running anything.** The boot chain on FydeOS dual-boot installs is not obvious, and editing the wrong config file (there are several decoys) does nothing and wastes a lot of time.
+The touchscreen works, so you can move around fydeos. 
+Enable developer mode (go to settings and search 'developer'), reboot, download the script (install-touchpad-fix.sh) in this repository
+
+Go to the shell with ctrl-alt-T
+
+type 'shell' to get a genuine terminal
+
+then navigate to the right directory:
+cd /home/chronos/user/MyFiles/Downloads
+
+'ls' to check if the script is in that directory (it should be)
+
+then run the script:
+
+sudo bash install-touchpad-fix.sh
+
+====
+
+Below is the complete, verified procedure for a **FydeOS dual-boot install** (installed alongside Windows/Linux without repartitioning, using the `FYDEOS-DUAL-BOOT` partition + rEFInd + GRUB boot chain). It assumes you already have a working patched `dsdt.aml` from a prior Ubuntu/Debian fix on the same physical machine (BIOS GACN49WW-style ACPI bug: OEM revision bump, `If(...==0x02)` → `Else`, and a duplicate `CDAT` field removed). See my other repo on how to fix that, or use the files in this repo which are ready.
 
 Note: I created this hack with the help of Claude AI, since I couldn't find a fix anywhere on the net.
 
-The scripts 00-prepare-devmode.sh and install-touchpad-fix.sh automate the entire process as a post - fresh install of fydeos, but I am not sure if those work in every use case.
-
-
+The scripts 00-prepare-devmode.sh and install-touchpad-fix.sh automate the entire process as a post - fresh install of fydeos.
 
 ---
 
