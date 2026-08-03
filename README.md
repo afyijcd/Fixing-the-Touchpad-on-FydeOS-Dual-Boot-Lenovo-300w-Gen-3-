@@ -19,6 +19,8 @@ then run the script:
 
 sudo bash install-touchpad-fix.sh
 
+reboot and your touchpad works (mine did in July 2026)
+
 ====
 
 Below is the complete, verified procedure for a **FydeOS dual-boot install** (installed alongside Windows/Linux without repartitioning, using the `FYDEOS-DUAL-BOOT` partition + rEFInd + GRUB boot chain). It assumes you already have a working patched `dsdt.aml` from a prior Ubuntu/Debian fix on the same physical machine (BIOS GACN49WW-style ACPI bug: OEM revision bump, `If(...==0x02)` → `Else`, and a duplicate `CDAT` field removed). See my other repo on how to fix that, or use the files in this repo which are ready.
